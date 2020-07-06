@@ -20,7 +20,8 @@
             width: 42px;
         }
 
-        .btn-primary {
+        .btn-primary,
+        .btn-secondary {
             width: 89px;
         }
     </style>
@@ -65,13 +66,13 @@
                         <div class="col-6">
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <input type="number" class="form-control" id="number1" name="number1"
+                                    <input type="number" class="form-control" id="value1" name="value1"
                                         placeholder="Enter Value 1">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <input type="number" class="form-control" id="number2" name="number2"
+                                    <input type="number" class="form-control" id="value2" name="value2"
                                         placeholder="Enter Value 2">
                                 </div>
                             </div>
@@ -81,32 +82,45 @@
                                 <div class="col-12">
                                     <div class="btn-toolbar" role="toolbar">
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-success" id="addValues">+</button>
-                                        </div>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-danger" id="subtractValues">-</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-12">
-                                    <div class="btn-toolbar" role="toolbar">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-warning" id="multiplyValues">*</button>
-                                        </div>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-info" id="divideValues">/</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-12">
-                                    <div class="btn-toolbar" role="toolbar">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-primary"
+                                            <button type="button" class="btn btn-secondary"
                                                 id="clearValues">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-12">
+                                    <div class="btn-toolbar" role="toolbar">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-success" id="addValues"
+                                                value="+">+</button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-danger" id="subtractValues"
+                                                value="-">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-12">
+                                    <div class="btn-toolbar" role="toolbar">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-warning" id="multiplyValues"
+                                                value="*">*</button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-info" id="divideValues"
+                                                value="/">/</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-12">
+                                    <div class="btn-toolbar" role="toolbar">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-primary" id="calculate">Enter</button>
                                         </div>
                                     </div>
                                 </div>
@@ -116,6 +130,118 @@
                 </div>
             </div>
         </form>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script>
+
+            let simpleValue1 = document.getElementById("simpleValue1");
+            let simpleOperation = document.getElementById("simpleOperation");
+            let simpleValue2 = document.getElementById("simpleValue2");
+            let simpleResult = document.getElementById("simpleResult");
+
+            let value1 = document.getElementById("value1");
+            let value2 = document.getElementById("value2");
+
+            let clearValues = document.getElementById("clearValues");
+            let addValues = document.getElementById("addValues");
+            let subtractValues = document.getElementById("subtractValues");
+            let multiplyValues = document.getElementById("multiplyValues");
+            let divideValues = document.getElementById("divideValues");
+            let calculate = document.getElementById("calculate");
+
+            value1.onchange = function (event) {
+                simpleValue1.innerHTML = value1.value;
+            };
+
+            value2.onchange = function (event) {
+                simpleValue2.innerHTML = value2.value;
+            };
+
+            clearValues.onclick = function (event) {
+                value1.value = '';
+                value2.value = '';
+                simpleValue1.innerHTML = '';
+                simpleOperation.innerHTML = '';
+                simpleValue2.innerHTML = '';
+                simpleResult.innerHTML = '';
+            };
+
+            addValues.onclick = function (event) {
+                simpleOperation.innerHTML = '+';
+            };
+
+            subtractValues.onclick = function (event) {
+                simpleOperation.innerHTML = '-';
+            };
+
+            multiplyValues.onclick = function (event) {
+                simpleOperation.innerHTML = '*';
+            };
+
+            divideValues.onclick = function (event) {
+                simpleOperation.innerHTML = '/';
+            };
+
+            calculate.onclick = function (event) {
+                let isValid = true;
+
+                if (!value1.value || isNaN(value1.value)) {
+                    isValid = false;
+                    simpleValue1.innerHTML = "Enter Value 1"
+                    simpleResult.innerHTML = '';
+                }
+
+                if (!value2.value || isNaN(value2.value)) {
+                    isValid = false;
+                    simpleValue2.innerHTML = "Enter Value 2"
+                    simpleResult.innerHTML = '';
+                }
+
+                if (simpleOperation.innerHTML !== '+' && simpleOperation.innerHTML !== '-' && simpleOperation.innerHTML !== '*' && simpleOperation.innerHTML !== '/') {
+                    isValid = false;
+                    simpleOperation.innerHTML = "Select Operation"
+                    simpleResult.innerHTML = '';
+                }
+
+                if (isValid) {
+                    let float1 = parseFloat(value1.value);
+                    let float2 = parseFloat(value2.value);
+                    let operation = simpleOperation.innerHTML;
+                    let result = 0;
+                    switch (operation) {
+                        case '+':
+                            result = float1 + float2;
+                            simpleResult.innerHTML = '= ' + result.toString();
+                            break;
+                        case '-':
+                            result = float1 - float2;
+                            simpleResult.innerHTML = '= ' + result.toString();
+                            break;
+                        case '*':
+                            result = float1 * float2;
+                            simpleResult.innerHTML = '= ' + result.toString();
+                            break;
+                        case '/':
+                            if (float2 === 0) {
+                                simpleResult.innerHTML = 'division by zero is undefined';
+                            }
+                            else {
+                                result = float1 / float2;
+                                simpleResult.innerHTML = '= ' + result.toString();
+                            }
+                            break;
+                    }
+                }
+            };
+
+        </script>
 </body>
 
 </html>
