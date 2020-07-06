@@ -156,10 +156,12 @@
 
             value1.onchange = function (event) {
                 simpleValue1.innerHTML = value1.value;
+                simpleResult.innerHTML = '';
             };
 
             value2.onchange = function (event) {
                 simpleValue2.innerHTML = value2.value;
+                simpleResult.innerHTML = '';
             };
 
             clearValues.onclick = function (event) {
@@ -173,18 +175,22 @@
 
             addValues.onclick = function (event) {
                 simpleOperation.innerHTML = '+';
+                simpleResult.innerHTML = '';
             };
 
             subtractValues.onclick = function (event) {
                 simpleOperation.innerHTML = '-';
+                simpleResult.innerHTML = '';
             };
 
             multiplyValues.onclick = function (event) {
                 simpleOperation.innerHTML = '*';
+                simpleResult.innerHTML = '';
             };
 
             divideValues.onclick = function (event) {
                 simpleOperation.innerHTML = '/';
+                simpleResult.innerHTML = '';
             };
 
             calculate.onclick = function (event) {
