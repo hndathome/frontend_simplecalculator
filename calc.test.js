@@ -49,6 +49,26 @@ describe('calculator functionality', () => {
         expect(getByText(container, 'Enter')).toBeInTheDocument();
     })
 
+    test('can clear results', () => {
+
+        const buttonClear = container.querySelector('#clearValues');
+        fireEvent.click(buttonClear);
+
+        let number1 = container.querySelector("#value1");
+        let number2 = container.querySelector("#value2");
+        expect(number1.value).toBe('');
+        expect(number2.value).toBe('');
+
+        let simpleValue1 = container.querySelector("#simpleValue1");
+        expect(simpleValue1.innerHTML).toBe('');
+        let simpleOperation = container.querySelector("#simpleOperation");
+        expect(simpleOperation.innerHTML).toBe('');
+        let simpleValue2 = container.querySelector("#simpleValue2");
+        expect(simpleValue2.innerHTML).toBe('');
+        let result = container.querySelector("#simpleResult");
+        expect(result.innerHTML).toBe('');
+    })
+
     test('can add two numbers', () => {
 
         let number1 = container.querySelector("#value1");
@@ -63,6 +83,12 @@ describe('calculator functionality', () => {
         const buttonEnter = getByText(container, 'Enter');
         fireEvent.click(buttonEnter);
 
+        let simpleValue1 = container.querySelector("#simpleValue1");
+        expect(simpleValue1.innerHTML).toBe('2');
+        let simpleOperation = container.querySelector("#simpleOperation");
+        expect(simpleOperation.innerHTML).toBe('+');
+        let simpleValue2 = container.querySelector("#simpleValue2");
+        expect(simpleValue2.innerHTML).toBe('3');
         let result = container.querySelector("#simpleResult");
         expect(result.innerHTML).toBe('= 5');
     })
@@ -81,6 +107,12 @@ describe('calculator functionality', () => {
         const buttonEnter = getByText(container, 'Enter');
         fireEvent.click(buttonEnter);
 
+        let simpleValue1 = container.querySelector("#simpleValue1");
+        expect(simpleValue1.innerHTML).toBe('2');
+        let simpleOperation = container.querySelector("#simpleOperation");
+        expect(simpleOperation.innerHTML).toBe('-');
+        let simpleValue2 = container.querySelector("#simpleValue2");
+        expect(simpleValue2.innerHTML).toBe('3');
         let result = container.querySelector("#simpleResult");
         expect(result.innerHTML).toBe('= -1');
     })
@@ -99,6 +131,12 @@ describe('calculator functionality', () => {
         const buttonEnter = getByText(container, 'Enter');
         fireEvent.click(buttonEnter);
 
+        let simpleValue1 = container.querySelector("#simpleValue1");
+        expect(simpleValue1.innerHTML).toBe('2');
+        let simpleOperation = container.querySelector("#simpleOperation");
+        expect(simpleOperation.innerHTML).toBe('*');
+        let simpleValue2 = container.querySelector("#simpleValue2");
+        expect(simpleValue2.innerHTML).toBe('3');
         let result = container.querySelector("#simpleResult");
         expect(result.innerHTML).toBe('= 6');
     })
@@ -117,6 +155,12 @@ describe('calculator functionality', () => {
         const buttonEnter = getByText(container, 'Enter');
         fireEvent.click(buttonEnter);
 
+        let simpleValue1 = container.querySelector("#simpleValue1");
+        expect(simpleValue1.innerHTML).toBe('3');
+        let simpleOperation = container.querySelector("#simpleOperation");
+        expect(simpleOperation.innerHTML).toBe('/');
+        let simpleValue2 = container.querySelector("#simpleValue2");
+        expect(simpleValue2.innerHTML).toBe('2');
         let result = container.querySelector("#simpleResult");
         expect(result.innerHTML).toBe('= 1.5');
     })
