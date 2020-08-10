@@ -75,8 +75,8 @@ describe('calculator functionality', () => {
         fireEvent.change(number1, { target: { value: 2 } });
         fireEvent.change(number2, { target: { value: 3 } });
 
-        const buttonAdd = container.querySelector('#subtractValues');
-        fireEvent.click(buttonAdd);
+        const buttonSubtract = container.querySelector('#subtractValues');
+        fireEvent.click(buttonSubtract);
 
         const buttonEnter = getByText(container, 'Enter');
         fireEvent.click(buttonEnter);
@@ -93,8 +93,8 @@ describe('calculator functionality', () => {
         fireEvent.change(number1, { target: { value: 2 } });
         fireEvent.change(number2, { target: { value: 3 } });
 
-        const buttonAdd = container.querySelector('#multiplyValues');
-        fireEvent.click(buttonAdd);
+        const buttonMultiply = container.querySelector('#multiplyValues');
+        fireEvent.click(buttonMultiply);
 
         const buttonEnter = getByText(container, 'Enter');
         fireEvent.click(buttonEnter);
@@ -111,8 +111,8 @@ describe('calculator functionality', () => {
         fireEvent.change(number1, { target: { value: 3 } });
         fireEvent.change(number2, { target: { value: 2 } });
 
-        const buttonAdd = container.querySelector('#divideValues');
-        fireEvent.click(buttonAdd);
+        const buttonDivide = container.querySelector('#divideValues');
+        fireEvent.click(buttonDivide);
 
         const buttonEnter = getByText(container, 'Enter');
         fireEvent.click(buttonEnter);
